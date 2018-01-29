@@ -1,11 +1,16 @@
-from datetime import timezone
+
 
 from django.db import models
 
 # Create your models here.
+from django.utils import timezone
+
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey(
+        'auth.User',
+        on_delete=models.CASCADE,
+    )
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True)
     created_date = models.DateTimeField(
