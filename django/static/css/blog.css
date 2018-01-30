@@ -34,10 +34,14 @@ h2 {
 .post > .post-date {
     text-align: right;
     font-size: 11px;
-    margin-bottom: -6px;
+    margin-bottom: -11px;
 }
 
 .post > .post-content {
     max-height: 190px;
     overflow: hidden;
+}
+.post > .post-content.full{
+    max-height: initial;
+    overflow: initial;
 }
