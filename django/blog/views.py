@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def post_list(reuqest):
+def post_list(request):
     # 1. 브라우저에서 요청
     # 2. 장고 runserver로 실행중인 서버에 도착
     # 3. runserver는 요청을 장고코드로 전달
@@ -16,7 +16,16 @@ def post_list(reuqest):
     #   7.2 가져온 내용을 처리 (렌더렝, render())하여 리턴
     # 8. 함수의 실행결과(리턴값)을 브라우저로 다시전달
     # Http프로토콜로 텍스트 데이터 응답을 반환
+
     # return HttpResponse('Post List')
     # return HttpResponse('<html><body><h1>Post List</h1><p>post 목록을 보여줄 예정입니다.</p></body></html>')
-    return render(reuqest, 'blog/post_list.html')
+     return render(request, 'blog/post_list.html')
+    # post_detail('localhost:8000/detail')
 
+
+def post_detail(request):
+    return render(request, 'blog/post_detail.html')
+    '''
+    localhost:8000/detail/로 온 요청을 'blog/post_detail.html'을 render한 결과를 리턴 
+    :return: 
+    '''
