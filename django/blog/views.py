@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Post
 
 
 # Create your views here.
@@ -17,9 +18,20 @@ def post_list(request):
     # 8. 함수의 실행결과(리턴값)을 브라우저로 다시전달
     # Http프로토콜로 텍스트 데이터 응답을 반환
 
+    posts = Post.objects.all()
+    # render()함수에 전달할 dict 객체 생성
+
+    context = {
+        'posts': posts,
+    }
+
     # return HttpResponse('Post List')
-    # return HttpResponse('<html><body><h1>Post List</h1><p>post 목록을 보여줄 예정입니다.</p></body></html>')
-     return render(request, 'blog/post_list.html')
+    # return HttpResponse('<html><bodㅇy><h1>Post List</h1><p>post 목록을 보여줄 예정입니다.</p></body></html>')
+    return render(
+        request=request,
+        template_name='blog/post_list.html',
+        context=context,
+    )
     # post_detail('localhost:8000/detail')
 
 
