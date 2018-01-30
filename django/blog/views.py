@@ -35,8 +35,11 @@ def post_list(request):
     # post_detail('localhost:8000/detail')
 
 
-def post_detail(request):
-    return render(request, 'blog/post_detail.html')
+def post_detail(request, pk):
+    context = {
+        'post': Post.objects.get(pk=pk),
+    }
+    return render(request, 'blog/post_detail.html',context)
     '''
     localhost:8000/detail/로 온 요청을 'blog/post_detail.html'을 render한 결과를 리턴 
     :return: 

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,12 +6,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>DjangoGirls</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aperiam aspernatur at atque commodi corporis debitis deleniti error explicabo fuga illo impedit in incidunt ipsum itaque magni modi nisi nobis nostrum numquam odio officia, perferendis quam quas quasi quia quisquam recusandae reiciendis repudiandae sed ut voluptas voluptate voluptatibus! Accusantium, in?
-</p>
-
+    <div class="header">
+        <div class="container">
+            <h1><a href="">Django Girls Blog</a></h1>
+        </div>
+    </div>
+    <div class="contrainer">
+        <div class="post">
+            <p class="post-date">published: {{post.published_date}}</p>
+            <h2 class="post-title"><a href="">{{post.title}}</a></h2>
+            <p class="post-content">{{post.content|linebreaksbr}}</p>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
