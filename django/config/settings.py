@@ -15,7 +15,17 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # ************************BASE_DIR는 'Django'폴더를 뜻함****************************
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#Django에서 정적파일을 검색할 경로 목록
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
+STATIC_URL = '/static/'
+#만약 요청의 url이 /static/으로 시적한경우 ,
+# staticfiles_dirs에 정의된 경로 목록에서
+# /static/<path>/ <-<path>부분에 정의된 경로에 해당하는
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -28,7 +38,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,8 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #우리가 새로 만든 'blog'패키지가
-    #Django의 application으로 동작하도록 등록해 줌
+    # 우리가 새로 만든 'blog'패키지가
+    # Django의 application으로 동작하도록 등록해 줌
     'blog',
 ]
 
@@ -58,7 +67,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #Django에서 템플릿을 검색할 때 사용할 경로 목록
+        # Django에서 템플릿을 검색할 때 사용할 경로 목록
         'DIRS': [
             TEMPLATES_DIR
         ],
@@ -76,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -86,7 +94,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -106,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -120,8 +126,5 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_URL = '/static/'
