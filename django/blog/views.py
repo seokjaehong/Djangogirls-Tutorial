@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Post
 
@@ -52,6 +52,37 @@ def post_add(request):
     # 2.  HttpResponse가 아니라 blog/post_add.html을 출력
     # post_add.html은 base.html을 확장 title(h2)부분에 'post add' 출력
 
+    if request.method == 'POST':
+        # 요청의 method가 post일 때
+        title = request.POST['title']
+        content = request.POST['content']
+        # return HttpResponse(f'{title}:{content}')
+        # ORM을 사용해서 title과 content 해당하는 post생성
+
+        post = Post.objects.create(
+            author=request.user,
+            title=title,
+            content=content,
+        )
+        return redirect('post-detail', pk=post.pk)
+
+        #redirect가 아니라 render를 쓰는경우
+        # context ={
+        #     'post' : post,
+        # }
+        # return render(request ,'blog/post_detail.html',context)
+
+        #return HttpResponse(f'{post.pk}{post.title}{post.content}')
+
+    else:
+        # 요청의 method가 get일때
+        pass
+
+        return render(request, 'blog/post_add.html')
     # return HttpResponse('Post add page')
 
-    return render(request, 'blog/post_add.html')
+def post_delete(request, pk):
+    if Post.request =='POST' :
+        post = Post.obeject.get(pk=pk)
+        post.delete()
+    return redirect('post-list')

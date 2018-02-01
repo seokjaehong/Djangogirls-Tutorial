@@ -6,7 +6,7 @@ urlpatterns = [
     #path('detail/', views.post_detail),
     # re_path(r'(?P<pk>\d+)/$', views.post_detail)
     path('<int:pk>/', views.post_detail, name='post-detail'),
-
+    path('<int:pk>/delete/', views.post_delete, name='post-delete'),
     # localhost :8000/add 에 접근할 수있는 path구현
     path('add', views.post_add, name = 'post-add')
 
