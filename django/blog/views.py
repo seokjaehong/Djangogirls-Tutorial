@@ -39,8 +39,19 @@ def post_detail(request, pk):
     context = {
         'post': Post.objects.get(pk=pk),
     }
-    return render(request, 'blog/post_detail.html',context)
+    return render(request, 'blog/post_detail.html', context)
     '''
     localhost:8000/detail/로 온 요청을 'blog/post_detail.html'을 render한 결과를 리턴 
     :return: 
     '''
+
+
+def post_add(request):
+    # 1. localhost:8000/add로 접근시
+    # 이 뷰가 실행되어서 pOST ADD PAGE 라는 문구를 보여주도록 urls 작
+    # 2.  HttpResponse가 아니라 blog/post_add.html을 출력
+    # post_add.html은 base.html을 확장 title(h2)부분에 'post add' 출력
+
+    # return HttpResponse('Post add page')
+
+    return render(request, 'blog/post_add.html')
