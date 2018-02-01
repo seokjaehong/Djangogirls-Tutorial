@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
-
-{% block title %}Post Add{% endblock %}
+{% block title %}Post add{% endblock %}
 
 {% block content %}
-{#   action type에 따라 바뀜, 예) search or /search 이런식으로 요청을 어디로 할지를 정하는것이 action #}
-{#   method 는 기본 값이 get으로 하면 파라미터가 주소로 다올라감,그래서 post로 바꺼준다 #}
+    <!--name이 title인 input요소와-->
+    <!--name이 content인 textarea요소,-->
+    <!--type이 submit인 button요소를-->
+
+    <!--하나의 form요소 안에 배치-->
+
     <form action="" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="title">제목</label>
-            <input id="'title" type="text" name="title" class="form-control">
+            <input id="title" type="text" name="title" class="form-control">
         </div>
 
         <div class="form-group">
@@ -19,5 +22,9 @@
         </div>
 
         <button type="submit" class="btn btn-primary">작성하기</button>
+
+
     </form>
+
+
 {% endblock %}
