@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
+{% block title %}
+	{% if post %}
+		Post edit (pk: {{ post.pk }})
+	{% else %}
+		Post add
+	{% endif %}
+{% endblock %}
 
+{% block content %}
 
 {% if form_error %}
 <div>
-    <h3>{{ form_error }}</h3>
+	<h4>{{ form_error }}</h4>
 </div>
 {% endif %}
 
-{% block title %}Post edit (pk: {{ post.pk }}){% endblock %}
-
-{% block content %}
 <form action="" method="POST">
 	{% csrf_token %}
 	<div class="form-group">
@@ -21,7 +26,6 @@
 			name="title"
 			class="form-control"
 			value="{{ post.title }}">
-		<!--request.POST['title']-->
 	</div>
 
 	<div class="form-group">
@@ -29,6 +33,12 @@
 		<textarea name="content" id="content" class="form-control">{{ post.content }}</textarea>
 	</div>
 
-	<button type="submit" class="btn btn-primary">수정하기</button>
+	<button type="submit" class="btn btn-primary">
+		{% if post %}
+			수정하기
+		{% else %}
+			작성하기
+		{% endif %}
+	</button>
 </form>
 {% endblock %}
